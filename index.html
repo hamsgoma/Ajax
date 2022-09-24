@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+  
+    <style>
+         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200&family=Qwitcher+Grypen:wght@700&display=swap');
+        *{
+            background-color:rgb(170, 130, 157);
+            font-family: 'Cairo', sans-serif;
+            font-size: xx-larger;
+            font-weight: bolder;
+            text-align: center;    
+        }
+        h1{
+
+            border: 1px black solid;
+            text-align: center;
+    
+        }
+        .onecontry{
+            display: inline-block;
+            width: 20%;
+            margin: 5%;
+            max-height: 200px;
+        }
+    </style>
+    </head>
+    <body>
+        <h1>دول اسبانيا</h1>
+      
+          <div id="txt"></div>
+      
+          <div id="contents">
+      
+          </div>
+      
+      
+      
+      
+        <script>
+          fetch("https://restcountries.com/v3.1/lang/spa")
+              .then(function (response) {
+                  return response.json();
+              })
+              .then(function (json) {
+                  
+                  console.log(json);
+                  for(var i=0; i < json.length; i++){
+                      
+                      var onecontry = "<img width='100%' src='" + json[i].flags.png + "'> <br> <span>" + json[i].name.nativeName.spa.official + "</span>";
+                      document.querySelector("#contents").innerHTML += "<div class='onecontry'>" + onecontry + "</div>";  
+                  }
+              })
+              .catch(function (error) {
+                  console.log('Request failed', error);
+              });
+      
+      </script>
+      </body>
+</html>
